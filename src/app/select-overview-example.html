@@ -1,0 +1,17 @@
+<h4>Below dropdown extracts: Emails, Mobile Numbers and Dates from the DocURL OR Internet URL of your choice</h4>
+<h4></h4>
+<h4>Dropdown</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Text Extracted</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

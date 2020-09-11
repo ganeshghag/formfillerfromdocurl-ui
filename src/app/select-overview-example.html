@@ -1,6 +1,12 @@
 <h4>Below dropdown extracts: Emails, Mobile Numbers and Dates from the DocURL OR Internet URL of your choice</h4>
-<h4></h4>
-<h4>Dropdown</h4>
+<mat-form-field class="example-full-width">
+  <mat-label>URL pointing to text</mat-label>
+  <input #docUrl matInput placeholder="http://" value="
+https://jsonplaceholder.typicode.com/users">
+</mat-form-field>
+<p></p>
+<button (click)="fetchData(docUrl.value); ">Extract Data</button>
+<p></p>
 <mat-form-field appearance="fill">
   <mat-label>Text Extracted</mat-label>
   <mat-select>

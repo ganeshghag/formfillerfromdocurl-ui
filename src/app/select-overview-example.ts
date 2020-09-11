@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 interface Food {
@@ -23,9 +23,24 @@ export class SelectOverviewExample {
 
   }
 
-  ngOnInit() {
-    console.log('from ngInit GG ');
-    this.sendPostRequest('James 9823456567 paid on 25/12/2020 and 1,234.23 to ganesh@email.com').subscribe(
+  fetchData(url: string): void {
+    url = url.trim();
+    if (!url) { return; }
+
+
+      const headers1 = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+   
+      this.httpClient.get(url,{headers: headers1, responseType:'text'}).subscribe((res)=>{
+      console.log(res);
+      this.extractDataInternal(JSON.stringify(res));
+    });
+    
+    //'James 9823456567 paid on 25/12/2020 and 1,234.23 to ganesh@email.com'
+    
+  }
+
+  private extractDataInternal(data: string){
+    this.sendPostRequest(data).subscribe(
       res => {
         console.log('RESP IS '+JSON.stringify(res));
         var emails = res[0];        var mobiles = res[1];
@@ -38,6 +53,10 @@ export class SelectOverviewExample {
         //amounts.forEach(elem => this.foods.push({value: elem, viewValue: elem}));  
         names.forEach(elem => this.foods.push({value: elem, viewValue: elem}));  
       });
+  }
+
+  ngOnInit() {
+    console.log('from ngInit GG ');
 
         //this.foods = res[0];
   }

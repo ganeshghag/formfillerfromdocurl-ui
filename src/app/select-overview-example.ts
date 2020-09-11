@@ -12,6 +12,7 @@ interface Food {
  */
 @Component({
   selector: 'select-overview-example',
+  styleUrls: ['select-overview-example.css'],
   templateUrl: 'select-overview-example.html',
 })
 export class SelectOverviewExample {
